@@ -3,5 +3,5 @@ A simple python implementation of PLONK ZK-Snark system. Using py-ecc and numpy 
 Do following commands to install dependencies.
 ```
 $ pip install py_ecc
-$ pip install
+$ pip install numpy
 ```
