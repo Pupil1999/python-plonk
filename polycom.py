@@ -16,16 +16,17 @@ class SRS:
         self.G1s.append(b.G1)
         for i in range(1, powers):
             self.G1s.append(b.multiply(self.G1s[-1], tau))
-            print(self.G1s[i])
+            #print(self.G1s[i])
         self.G2s.append(b.G2)
         self.G2s.append(b.multiply(b.G2, tau))
 
 class KZG:
     # Commit a polynomial to group1 curve
     @classmethod
-    def commit(srs: SRS, poly: Polynomial) -> G1Point:
+    def commit(self, srs: SRS, poly: Polynomial) -> G1Point:
+        assert(poly.basis == Basis.MONOMIAL)
         lens = poly.values.__len__()
         if lens > srs.power:
             raise Exception("Longer poly than srs!")
-        return ec_lincomb([(p, sca) for (p, sca) in zip(srs.G1s[:lens], poly.values)])
+        return ec_lincomb([(p, scalars) for (p, scalars) in zip(srs.G1s[:lens], poly.values)])
         

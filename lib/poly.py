@@ -178,6 +178,7 @@ class Polynomial:
             return o
 
         roots = [x.n for x in Scalar.roots_of_unity(len(self.values))]
+        #print(roots[0])
         o, nvals = Scalar.field_modulus, [x.n for x in self.values]
         if inv:
             assert self.basis == Basis.LAGRANGE
