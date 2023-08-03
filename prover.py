@@ -193,6 +193,11 @@ class Prover:
 
         # Public-coin lazy generation
         self.u = Scalar(random.randint(0, sys.maxsize))
+
+        # Some debug to help build the verifier
+        #print(Zh_x.coeff_eval(self.zeta))
+        #print(l1_x.coeff_eval(self.zeta))
+        #print(PI_zeta)
         
         return Proof(
             [com_a, com_b, com_c],
